@@ -1,9 +1,8 @@
 # Security Incident Report: Web Server Compromise
 
-**Report ID:** IR-2026-002
-**Classification:** Internal Use
-**Prepared by:** [Your Name], SOC Analyst
-**Date Prepared:** October 9, 2026
+
+**Prepared by:** AKINRINADE SAMSON OLAOLUWA
+**Date Prepared:** November 13, 2026
 **Environment:** Joomla web server `192.168.250.70` (Wayne Corp Inc. network, Boss of the SOC v1 dataset)
 **SIEM Platform:** Splunk Enterprise (Free license tier)
 **Data Sources:** `index=botsv1`, sourcetypes `stream:http` and `suricata`
@@ -163,8 +162,3 @@ index=botsv1 sourcetype=stream:http http_method=POST uri_path="/joomla/administr
 | where isnotnull(first_login) AND isnotnull(upload_time) AND (upload_time - first_login) < 600
 | eval minutes_between=round((upload_time - first_login)/60, 1)
 | convert ctime(first_login) ctime(upload_time)
-```
-
----
-
-*End of report.*
